@@ -1,11 +1,14 @@
 package tool;
 
+import org.apache.avro.Schema;
 import org.apache.avro.file.DataFileReader;
 import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.avro.specific.SpecificRecordBase;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class AvroReader {
@@ -21,8 +24,19 @@ public class AvroReader {
         SpecificDatumReader<T> datumReader = new SpecificDatumReader<>(avroClass);
 
         try (DataFileReader<T> fileReader = new DataFileReader<>(file, datumReader)) {
-            T record = fileReader.next();
-            System.out.println(record);
+            List<Schema.Field> fields = fileReader.getSchema().getFields();
+            System.out.println("All fields: " + fields + "\n");
+
+            Iterator<Schema.Field> fieldIterator = fields.iterator();
+
+            while (fileReader.hasNext() && fieldIterator.hasNext()) {
+                Schema.Field fieldName = fieldIterator.next();
+
+                System.out.println("Field: " + fieldName);
+
+                T record = fileReader.next();
+                System.out.println(record);
+            }
         } catch (org.apache.avro.AvroTypeException ex) {
             ex.printStackTrace();
         }
