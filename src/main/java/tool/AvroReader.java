@@ -7,7 +7,6 @@ import org.apache.avro.specific.SpecificRecordBase;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -27,13 +26,7 @@ public class AvroReader {
             List<Schema.Field> fields = fileReader.getSchema().getFields();
             System.out.println("All fields: " + fields + "\n");
 
-            Iterator<Schema.Field> fieldIterator = fields.iterator();
-
-            while (fileReader.hasNext() && fieldIterator.hasNext()) {
-                Schema.Field fieldName = fieldIterator.next();
-
-                System.out.println("Field: " + fieldName);
-
+            while (fileReader.hasNext()) {
                 T record = fileReader.next();
                 System.out.println(record);
             }
