@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>avro-debug-tool</groupId>
-  <artifactId>avro-debug-tool</artifactId>
+  <groupId>avro-reader-example</groupId>
+  <artifactId>avro-reader-example</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 

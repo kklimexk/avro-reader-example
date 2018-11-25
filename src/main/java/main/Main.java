@@ -16,8 +16,8 @@ public class Main {
                 avroFiles.put(args[i], Class.forName(args[i + 1]).asSubclass(SpecificRecordBase.class));
             }
 
-            AvroToolRunner avroToolRunner = new AvroToolRunner(avroFiles);
-            avroToolRunner.run();
+            AvroRunner avroRunner = new AvroRunner(avroFiles);
+            avroRunner.run();
         } else {
             throw new IllegalArgumentException("You have to specify path to avro with avro generated class!");
         }

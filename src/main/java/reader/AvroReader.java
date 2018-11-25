@@ -1,4 +1,4 @@
-package tool;
+package reader;
 
 import org.apache.avro.Schema;
 import org.apache.avro.file.DataFileReader;
