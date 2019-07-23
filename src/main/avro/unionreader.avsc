@@ -1,5 +1,6 @@
 { 
     "type":"record",
+    "version": "2.0.0",
     "name": "TestUnionNested",
     "namespace": "com.example",
     "fields":[
